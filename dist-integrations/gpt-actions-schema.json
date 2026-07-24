@@ -1,0 +1,516 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "TikTok LIVE API",
+    "description": "Real-time TikTok LIVE data: liveness detection, room and creator info, in-room rankings, gift catalogs, and live discovery. Free key at https://tik.tools/pricing. Upgrade there to unlock full leaderboards, agency recruiting feeds, and multi-region discovery.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "TikTok LIVE API",
+      "url": "https://tik.tools/pricing"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.tik.tools",
+      "description": "Production"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/webcast/check_alive": {
+      "get": {
+        "operationId": "checkAlive",
+        "summary": "Check if a creator is live",
+        "description": "Returns whether the given creator is currently broadcasting on TikTok LIVE. Lightweight liveness check by username.",
+        "parameters": [
+          {
+            "name": "unique_id",
+            "in": "query",
+            "required": true,
+            "description": "TikTok username (unique_id) without the @ symbol, for example charlidamelio.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Liveness result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webcast/live_status": {
+      "get": {
+        "operationId": "getLiveStatus",
+        "summary": "Instant liveness status",
+        "description": "Fast, cache-backed liveness check for a creator. Returns whether the user is live right now.",
+        "parameters": [
+          {
+            "name": "uniqueId",
+            "in": "query",
+            "required": true,
+            "description": "TikTok username (uniqueId) without the @ symbol.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Live status result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webcast/room_info": {
+      "post": {
+        "operationId": "getRoomInfo",
+        "summary": "Get room and host info",
+        "description": "Returns full room details plus host information for a creator's current or most recent LIVE room, including title, viewer stats, and status.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "unique_id"
+                ],
+                "properties": {
+                  "unique_id": {
+                    "type": "string",
+                    "description": "TikTok username (unique_id) without the @ symbol."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Room and host info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webcast/room_cover": {
+      "get": {
+        "operationId": "getRoomCover",
+        "summary": "Get LIVE thumbnail",
+        "description": "Returns the cover thumbnail image URL for a creator's current LIVE room.",
+        "parameters": [
+          {
+            "name": "unique_id",
+            "in": "query",
+            "required": true,
+            "description": "TikTok username (unique_id) without the @ symbol.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Room cover image data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webcast/user_profile": {
+      "get": {
+        "operationId": "getUserProfile",
+        "summary": "Get creator profile (Pro)",
+        "description": "Returns a creator's TikTok LIVE profile details. Requires a Pro key or higher. Get a key and upgrade at https://tik.tools/pricing.",
+        "parameters": [
+          {
+            "name": "unique_id",
+            "in": "query",
+            "required": true,
+            "description": "TikTok username (unique_id) without the @ symbol.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Creator profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Tier too low. Upgrade to Pro at https://tik.tools/pricing."
+          }
+        }
+      }
+    },
+    "/webcast/user_earnings": {
+      "get": {
+        "operationId": "getUserEarnings",
+        "summary": "Get creator diamonds and earnings",
+        "description": "Returns diamond and earnings estimates for a creator. Requires a Basic key or higher. Get a key and upgrade at https://tik.tools/pricing.",
+        "parameters": [
+          {
+            "name": "unique_id",
+            "in": "query",
+            "required": true,
+            "description": "TikTok username (unique_id) without the @ symbol.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Earnings estimate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Tier too low. Upgrade to Basic or higher at https://tik.tools/pricing."
+          }
+        }
+      }
+    },
+    "/webcast/rankings": {
+      "get": {
+        "operationId": "getRankings",
+        "summary": "Get in-room leaderboard",
+        "description": "Returns the in-room gifter and supporter leaderboard for a creator's current LIVE room.",
+        "parameters": [
+          {
+            "name": "unique_id",
+            "in": "query",
+            "required": true,
+            "description": "TikTok username (unique_id) without the @ symbol.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "In-room leaderboard",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webcast/ranklist/popular": {
+      "get": {
+        "operationId": "getPopularRanklist",
+        "summary": "Get Popular LIVE board (Agency)",
+        "description": "Returns the Popular LIVE leaderboard for a region. Requires an Agency key. Get a key and upgrade at https://tik.tools/pricing.",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": true,
+            "description": "Two-letter region code, for example US, GB, DE.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Popular LIVE board",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Tier too low. Upgrade to Agency at https://tik.tools/pricing."
+          }
+        }
+      }
+    },
+    "/webcast/eligible_creators": {
+      "get": {
+        "operationId": "getEligibleCreators",
+        "summary": "Find creators to recruit (Agency)",
+        "description": "Returns creators eligible for agency recruiting in a region, filtered by minimum score. Requires an Agency key. Get a key and upgrade at https://tik.tools/pricing.",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": true,
+            "description": "Two-letter region code, for example US, GB, DE.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "min_score",
+            "in": "query",
+            "required": false,
+            "description": "Minimum eligibility score to include a creator.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of creators to return.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eligible creators feed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Tier too low. Upgrade to Agency at https://tik.tools/pricing."
+          }
+        }
+      }
+    },
+    "/webcast/gift_info": {
+      "get": {
+        "operationId": "getGiftInfo",
+        "summary": "Get gift catalog",
+        "description": "Returns the TikTok LIVE gift catalog with names, diamond costs, and icons.",
+        "responses": {
+          "200": {
+            "description": "Gift catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webcast/gifts_by_country": {
+      "get": {
+        "operationId": "getGiftsByCountry",
+        "summary": "Get gifts by country (Pro)",
+        "description": "Returns the gift catalog available in a specific country. Requires a Pro key or higher. Get a key and upgrade at https://tik.tools/pricing.",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "required": true,
+            "description": "Two-letter country code, for example US, GB, DE.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Country gift catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Tier too low. Upgrade to Pro at https://tik.tools/pricing."
+          }
+        }
+      }
+    },
+    "/webcast/gift_gallery": {
+      "get": {
+        "operationId": "getGiftGallery",
+        "summary": "Get creator gift gallery",
+        "description": "Returns the gift gallery for a creator, showing gifts relevant to their LIVE.",
+        "parameters": [
+          {
+            "name": "unique_id",
+            "in": "query",
+            "required": true,
+            "description": "TikTok username (unique_id) without the @ symbol.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gift gallery",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webcast/feed": {
+      "get": {
+        "operationId": "getLiveFeed",
+        "summary": "Discover live rooms (Pro)",
+        "description": "Returns a discovery feed of currently live rooms in a region. Requires a Pro key or higher. Get a key and upgrade at https://tik.tools/pricing.",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": true,
+            "description": "Two-letter region code, for example US, GB, DE.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "description": "Number of rooms to return.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Live discovery feed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Tier too low. Upgrade to Pro at https://tik.tools/pricing."
+          }
+        }
+      }
+    },
+    "/webcast/hashtag_list": {
+      "get": {
+        "operationId": "getHashtagList",
+        "summary": "Get trending LIVE hashtags",
+        "description": "Returns a list of trending TikTok LIVE hashtags.",
+        "parameters": [
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "description": "Number of hashtags to return.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trending hashtags",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webcast/rate_limits": {
+      "get": {
+        "operationId": "getRateLimits",
+        "summary": "Get current rate limits",
+        "description": "Returns the rate limit and quota status for the current API key. Upgrade for higher limits at https://tik.tools/pricing.",
+        "responses": {
+          "200": {
+            "description": "Rate limit status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "API key sent in the x-api-key header. Get a free key at https://tik.tools/pricing."
+      }
+    }
+  }
+}

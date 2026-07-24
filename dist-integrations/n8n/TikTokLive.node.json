@@ -1,0 +1,34 @@
+{
+  "node": "n8n-nodes-tiktok-live.tikTokLive",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Marketing",
+    "Analytics",
+    "Data & Storage"
+  ],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://tik.tools/pricing"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://tik.tools/pricing"
+      }
+    ]
+  },
+  "alias": [
+    "TikTok",
+    "LIVE",
+    "Creator",
+    "Livestream",
+    "Ranklist"
+  ],
+  "subcategories": {
+    "Marketing": [
+      "Social Media"
+    ]
+  }
+}

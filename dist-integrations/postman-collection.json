@@ -1,0 +1,519 @@
+{
+  "info": {
+    "name": "TikTok LIVE API",
+    "description": "Real-time TikTok LIVE data: liveness detection, room and creator info, in-room and regional rankings, gift catalogs, and live discovery.\n\nBase URL: https://api.tik.tools\nAuth: send your key in the x-api-key header (or as ?apiKey=). Get a free key at https://tik.tools/pricing and upgrade there for full leaderboards, agency recruiting feeds, and multi-region discovery.\n\nSet the collection variables apiKey and baseUrl, then run any request.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tik.tools",
+      "type": "string"
+    },
+    {
+      "key": "apiKey",
+      "value": "REPLACE_WITH_YOUR_KEY",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Live detection",
+      "item": [
+        {
+          "name": "Check alive",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/check_alive?unique_id=charlidamelio",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "check_alive"
+              ],
+              "query": [
+                {
+                  "key": "unique_id",
+                  "value": "charlidamelio",
+                  "description": "TikTok username without @"
+                }
+              ]
+            },
+            "description": "Is the creator currently live. Sandbox tier."
+          }
+        },
+        {
+          "name": "Live status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/live_status?uniqueId=charlidamelio",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "live_status"
+              ],
+              "query": [
+                {
+                  "key": "uniqueId",
+                  "value": "charlidamelio",
+                  "description": "TikTok username without @"
+                }
+              ]
+            },
+            "description": "Fast instant liveness check. Sandbox tier."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Room & creator",
+      "item": [
+        {
+          "name": "Room info",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unique_id\": \"charlidamelio\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webcast/room_info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "room_info"
+              ]
+            },
+            "description": "Full room plus host info. Sandbox tier."
+          }
+        },
+        {
+          "name": "Room cover",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/room_cover?unique_id=charlidamelio",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "room_cover"
+              ],
+              "query": [
+                {
+                  "key": "unique_id",
+                  "value": "charlidamelio",
+                  "description": "TikTok username without @"
+                }
+              ]
+            },
+            "description": "LIVE thumbnail image. Sandbox tier."
+          }
+        },
+        {
+          "name": "User profile (Pro)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/user_profile?unique_id=charlidamelio",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "user_profile"
+              ],
+              "query": [
+                {
+                  "key": "unique_id",
+                  "value": "charlidamelio",
+                  "description": "TikTok username without @"
+                }
+              ]
+            },
+            "description": "Creator profile. Requires Pro key. Upgrade at https://tik.tools/pricing."
+          }
+        },
+        {
+          "name": "User earnings (Basic)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/user_earnings?unique_id=charlidamelio",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "user_earnings"
+              ],
+              "query": [
+                {
+                  "key": "unique_id",
+                  "value": "charlidamelio",
+                  "description": "TikTok username without @"
+                }
+              ]
+            },
+            "description": "Diamonds and earnings estimate. Requires Basic key. Upgrade at https://tik.tools/pricing."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rankings",
+      "item": [
+        {
+          "name": "In-room rankings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/rankings?unique_id=charlidamelio",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "rankings"
+              ],
+              "query": [
+                {
+                  "key": "unique_id",
+                  "value": "charlidamelio",
+                  "description": "TikTok username without @"
+                }
+              ]
+            },
+            "description": "In-room gifter leaderboard. Sandbox tier."
+          }
+        },
+        {
+          "name": "Popular LIVE board (Agency)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/ranklist/popular?region=US",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "ranklist",
+                "popular"
+              ],
+              "query": [
+                {
+                  "key": "region",
+                  "value": "US",
+                  "description": "Two-letter region code"
+                }
+              ]
+            },
+            "description": "Popular LIVE board for a region. Requires Agency key. Upgrade at https://tik.tools/pricing."
+          }
+        },
+        {
+          "name": "Eligible creators (Agency)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/eligible_creators?region=US&min_score=50&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "eligible_creators"
+              ],
+              "query": [
+                {
+                  "key": "region",
+                  "value": "US",
+                  "description": "Two-letter region code"
+                },
+                {
+                  "key": "min_score",
+                  "value": "50",
+                  "description": "Minimum eligibility score"
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Max creators to return"
+                }
+              ]
+            },
+            "description": "Creators to recruit in a region. Requires Agency key. Upgrade at https://tik.tools/pricing."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gifts",
+      "item": [
+        {
+          "name": "Gift info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/gift_info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "gift_info"
+              ]
+            },
+            "description": "Full gift catalog with diamond costs. Sandbox tier."
+          }
+        },
+        {
+          "name": "Gifts by country (Pro)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/gifts_by_country?country=US",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "gifts_by_country"
+              ],
+              "query": [
+                {
+                  "key": "country",
+                  "value": "US",
+                  "description": "Two-letter country code"
+                }
+              ]
+            },
+            "description": "Gifts available in a country. Requires Pro key. Upgrade at https://tik.tools/pricing."
+          }
+        },
+        {
+          "name": "Gift gallery",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/gift_gallery?unique_id=charlidamelio",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "gift_gallery"
+              ],
+              "query": [
+                {
+                  "key": "unique_id",
+                  "value": "charlidamelio",
+                  "description": "TikTok username without @"
+                }
+              ]
+            },
+            "description": "Gift gallery for a creator. Sandbox tier."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Discovery",
+      "item": [
+        {
+          "name": "Live feed (Pro)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/feed?region=US&count=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "feed"
+              ],
+              "query": [
+                {
+                  "key": "region",
+                  "value": "US",
+                  "description": "Two-letter region code"
+                },
+                {
+                  "key": "count",
+                  "value": "20",
+                  "description": "Number of rooms to return"
+                }
+              ]
+            },
+            "description": "Live discovery feed. Requires Pro key. Upgrade at https://tik.tools/pricing."
+          }
+        },
+        {
+          "name": "Hashtag list",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/hashtag_list?count=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "hashtag_list"
+              ],
+              "query": [
+                {
+                  "key": "count",
+                  "value": "20",
+                  "description": "Number of hashtags to return"
+                }
+              ]
+            },
+            "description": "Trending LIVE hashtags. Sandbox tier."
+          }
+        },
+        {
+          "name": "Rate limits",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webcast/rate_limits",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webcast",
+                "rate_limits"
+              ]
+            },
+            "description": "Current quota and rate limit status for your key. Sandbox tier."
+          }
+        }
+      ]
+    }
+  ]
+}

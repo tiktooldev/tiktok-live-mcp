@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "tiktools-api-key",
+      "description": "TikTok LIVE API key (get a free key at https://tik.tools/pricing)",
+      "password": true
+    }
+  ],
+  "servers": {
+    "tiktok-live": {
+      "command": "npx",
+      "args": ["-y", "tiktok-live-mcp"],
+      "env": {
+        "TIKTOOLS_API_KEY": "${input:tiktools-api-key}"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "tiktok-live-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for the TikTok LIVE API - detect live creators, room and creator data, gifts, and leaderboards from any TikTok LIVE stream.",
+  "type": "module",
+  "bin": {
+    "tiktok-live-mcp": "src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "tiktok",
+    "tiktok-live",
+    "livestream",
+    "claude",
+    "cursor",
+    "llm",
+    "ai-tools"
+  ],
+  "author": "TikTool",
+  "license": "MIT",
+  "homepage": "https://tik.tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiktooldev/tiktok-live-mcp"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.23.8"
+  }
+}

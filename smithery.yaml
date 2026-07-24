@@ -1,0 +1,24 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - tiktoolsApiKey
+    properties:
+      tiktoolsApiKey:
+        type: string
+        title: TikTools API Key
+        description: Free key at https://tik.tools/pricing
+      tiktoolsApiBase:
+        type: string
+        title: API base URL
+        default: https://api.tik.tools
+  commandFunction: |
+    (config) => ({
+      command: 'node',
+      args: ['src/index.js'],
+      env: {
+        TIKTOOLS_API_KEY: config.tiktoolsApiKey,
+        TIKTOOLS_API_BASE: config.tiktoolsApiBase || 'https://api.tik.tools'
+      }
+    })
