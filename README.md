@@ -229,7 +229,7 @@ Returns the ranked board. Below Global Agency the creator identifiers come back 
 
 ## Real-time events
 
-The REST tools above answer point-in-time questions. For live chat, gift, battle and caption streams, connect a WebSocket:
+The REST tools above answer point-in-time questions. For live chat, gift and battle streams, connect a WebSocket:
 
 ```
 wss://api.tik.tools/?uniqueId=<username>&apiKey=YOUR_KEY

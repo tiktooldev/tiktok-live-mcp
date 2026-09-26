@@ -3,7 +3,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 
-const VERSION = '0.2.0';
+const VERSION = '0.2.1';
 const DEFAULT_BASE = 'https://api.tik.tools';
 const UPGRADE = 'https://tik.tools/pricing';
 const TIMEOUT_MS = 20000;
