@@ -2,7 +2,7 @@
 
 An MCP (Model Context Protocol) server that gives Claude, Cursor, VSCode and any MCP client live access to TikTok LIVE data: detect who is live, pull room and creator data, gift catalogs and regional leaderboards, straight from a chat prompt.
 
-Powered by the [tik.tools](https://tik.tools) platform. Free tier included. Full unmasked leaderboards, league and gaming boards, the eligible-creator recruiting feed, and the real-time event WebSocket are available at [tik.tools/pricing](https://tik.tools/pricing).
+Powered by the [tik.tools](https://tik.tools) platform. 7-day free evaluation included (Sandbox). Full unmasked leaderboards, league and gaming boards, the eligible-creator recruiting feed, and the real-time event WebSocket are available at [tik.tools/pricing](https://tik.tools/pricing).
 
 ## Quick install
 

@@ -1,6 +1,6 @@
 # TikTok LIVE MCP server - editor setup
 
-This runs the TikTok LIVE MCP server (`tiktok-live-mcp`) locally through `npx`, exposing the TikTok LIVE API (https://api.tik.tools) as MCP tools inside your editor or desktop client. Get a free API key at https://tik.tools/pricing. Premium data is unlocked at https://tik.tools/pricing.
+This runs the TikTok LIVE MCP server (`tiktok-live-mcp`) locally through `npx`, exposing the TikTok LIVE API (https://api.tik.tools) as MCP tools inside your editor or desktop client. Get an API key at https://tik.tools/pricing (7-day free evaluation). Premium data is unlocked at https://tik.tools/pricing.
 
 The server needs a `TIKTOOLS_API_KEY`. Each client below stores it a little differently. The exact JSON to paste is provided for all four.
 
@@ -16,7 +16,7 @@ Create `.vscode/mcp.json` in your project:
     {
       "type": "promptString",
       "id": "tiktools-api-key",
-      "description": "TikTok LIVE API key (get a free key at https://tik.tools/pricing)",
+      "description": "TikTok LIVE API key (get one at https://tik.tools/pricing, 7-day free evaluation)",
       "password": true
     }
   ],
@@ -41,7 +41,7 @@ The file `mcp.json` in this folder is the same block, ready to copy. If you pref
       {
         "type": "promptString",
         "id": "tiktools-api-key",
-        "description": "TikTok LIVE API key (get a free key at https://tik.tools/pricing)",
+        "description": "TikTok LIVE API key (get one at https://tik.tools/pricing, 7-day free evaluation)",
         "password": true
       }
     ],
@@ -121,4 +121,4 @@ Restart the client after saving so it picks up the new server.
 
 - Node.js 18 or newer is required so `npx` and native fetch are available.
 - The first run downloads `tiktok-live-mcp` through `npx`, which can take a few seconds.
-- Free-tier keys cover the core live checks. Profile, feed, popular ranklist, and eligible creators need a paid tier. Review plans at https://tik.tools/pricing.
+- Sandbox keys (7-day free evaluation) cover the core live checks. Profile, feed, popular ranklist, and eligible creators need a paid tier. Review plans at https://tik.tools/pricing.

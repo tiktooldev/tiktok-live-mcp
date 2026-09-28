@@ -2,8 +2,8 @@
 
 Product: TikTok LIVE API
 Base URL: https://api.tik.tools
-Docs and free key: https://tik.tools/pricing
-One-liner: Real-time TikTok LIVE data - liveness detection, room and creator info, in-room and regional rankings, gift catalogs, and live discovery. Free key, paid tiers for full leaderboards and agency recruiting feeds.
+Docs and API key: https://tik.tools/pricing (7-day free evaluation)
+One-liner: Real-time TikTok LIVE data - liveness detection, room and creator info, in-room and regional rankings, gift catalogs, and live discovery. 7-day free evaluation, paid tiers for full leaderboards and agency recruiting feeds.
 
 Assets in this folder to attach where relevant:
 - gpt-actions-schema.json (OpenAPI 3.1 spec)

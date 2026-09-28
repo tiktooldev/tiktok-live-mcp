@@ -3,7 +3,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 
-const VERSION = '0.2.1';
+const VERSION = '0.2.2';
 const DEFAULT_BASE = 'https://api.tik.tools';
 const UPGRADE = 'https://tik.tools/pricing';
 const TIMEOUT_MS = 20000;
@@ -37,7 +37,7 @@ const server = new McpServer({ name: 'tiktok-live-mcp', version: VERSION });
 const NO_KEY = {
   error: 'No API key configured.',
   how_to_fix:
-    'Get a free API key at https://tik.tools/pricing and set TIKTOOLS_API_KEY (or TIKTOOL_API_KEY) in your MCP client config.',
+    'Get an API key at https://tik.tools/pricing (7-day free evaluation) and set TIKTOOLS_API_KEY (or TIKTOOL_API_KEY) in your MCP client config.',
 };
 
 // Single transport to the TikTok LIVE API. The key, timeout, size cap, upgrade
@@ -144,7 +144,7 @@ const smallCount = z.number().int().min(1).max(50).optional();
 
 tool(
   'check_live',
-  'Check whether one or more TikTok creators are currently live streaming. Returns live status and room id for each. Requires Basic tier or above; on the free Sandbox tier use get_live_status instead, which checks one creator at a time.',
+  'Check whether one or more TikTok creators are currently live streaming. Returns live status and room id for each. Requires Basic tier or above; on Sandbox use get_live_status instead, which checks one creator at a time.',
   { usernames: z.array(username).min(1).max(50).describe('TikTok usernames without the @') },
   async ({ usernames }) => {
     const r = await api('POST', '/webcast/bulk_live_check', { unique_ids: usernames });

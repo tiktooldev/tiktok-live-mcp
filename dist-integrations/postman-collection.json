@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "TikTok LIVE API",
-    "description": "Real-time TikTok LIVE data: liveness detection, room and creator info, in-room and regional rankings, gift catalogs, and live discovery.\n\nBase URL: https://api.tik.tools\nAuth: send your key in the x-api-key header (or as ?apiKey=). Get a free key at https://tik.tools/pricing and upgrade there for full leaderboards, agency recruiting feeds, and multi-region discovery.\n\nSet the collection variables apiKey and baseUrl, then run any request.",
+    "description": "Real-time TikTok LIVE data: liveness detection, room and creator info, in-room and regional rankings, gift catalogs, and live discovery.\n\nBase URL: https://api.tik.tools\nAuth: send your key in the x-api-key header (or as ?apiKey=). Get an API key at https://tik.tools/pricing (7-day free evaluation) and upgrade there for full leaderboards, agency recruiting feeds, and multi-region discovery.\n\nSet the collection variables apiKey and baseUrl, then run any request.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [

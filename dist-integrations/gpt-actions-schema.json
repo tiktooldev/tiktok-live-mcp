@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "TikTok LIVE API",
-    "description": "Real-time TikTok LIVE data: liveness detection, room and creator info, in-room rankings, gift catalogs, and live discovery. Free key at https://tik.tools/pricing. Upgrade there to unlock full leaderboards, agency recruiting feeds, and multi-region discovery.",
+    "description": "Real-time TikTok LIVE data: liveness detection, room and creator info, in-room rankings, gift catalogs, and live discovery. API key at https://tik.tools/pricing (7-day free evaluation). Upgrade there to unlock full leaderboards, agency recruiting feeds, and multi-region discovery.",
     "version": "1.0.0",
     "contact": {
       "name": "TikTok LIVE API",
@@ -509,7 +509,7 @@
         "type": "apiKey",
         "in": "header",
         "name": "x-api-key",
-        "description": "API key sent in the x-api-key header. Get a free key at https://tik.tools/pricing."
+        "description": "API key sent in the x-api-key header. Get one at https://tik.tools/pricing (7-day free evaluation)."
       }
     }
   }

@@ -9,7 +9,7 @@ export default defineComponent({
       type: "string",
       secret: true,
       label: "TikTok LIVE API Key",
-      description: "Your TikTok LIVE API key. Sent as the x-api-key header. Grab a free key at https://tik.tools/pricing. Popular live ranklist requires an Agency-tier key; upgrade at https://tik.tools/pricing.",
+      description: "Your TikTok LIVE API key. Sent as the x-api-key header. Get one at https://tik.tools/pricing (7-day free evaluation). Popular live ranklist requires an Agency-tier key; upgrade at https://tik.tools/pricing.",
     },
     region: {
       type: "string",

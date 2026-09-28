@@ -8,7 +8,7 @@ startCommand:
       tiktoolsApiKey:
         type: string
         title: TikTools API Key
-        description: Free key at https://tik.tools/pricing
+        description: Get an API key at https://tik.tools/pricing (7-day free evaluation)
       tiktoolsApiBase:
         type: string
         title: API base URL

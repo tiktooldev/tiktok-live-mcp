@@ -1,23 +1,23 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.tiktooldev/tiktok-live-mcp",
-  "description": "Live TikTok LIVE data for LLMs: detect live creators, room and creator data, gifts, and regional leaderboards. Free tier; full data at tik.tools.",
+  "description": "Live TikTok LIVE data for LLMs: detect live creators, room and creator data, gifts, and regional leaderboards. 7-day free evaluation; full data at tik.tools.",
   "repository": {
     "url": "https://github.com/tiktooldev/tiktok-live-mcp",
     "source": "github"
   },
-  "version": "0.2.1",
+  "version": "0.2.2",
   "packages": [
     {
       "registry_type": "npm",
       "registry_base_url": "https://registry.npmjs.org",
       "identifier": "tiktok-live-mcp",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "transport": { "type": "stdio" },
       "environment_variables": [
         {
           "name": "TIKTOOLS_API_KEY",
-          "description": "TikTools API key. Free key at https://tik.tools/pricing",
+          "description": "TikTools API key. Get one at https://tik.tools/pricing (7-day free evaluation)",
           "is_required": true,
           "is_secret": true
         }

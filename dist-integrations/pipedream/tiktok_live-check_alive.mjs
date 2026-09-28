@@ -1,7 +1,7 @@
 export default defineComponent({
   key: "tiktok_live-check_alive",
   name: "TikTok LIVE - Check Alive",
-  description: "Check whether a TikTok creator is currently live. Uses the TikTok LIVE API (https://api.tik.tools). Get a free key at https://tik.tools/pricing.",
+  description: "Check whether a TikTok creator is currently live. Uses the TikTok LIVE API (https://api.tik.tools). Get an API key at https://tik.tools/pricing (7-day free evaluation).",
   version: "0.0.1",
   type: "action",
   props: {
@@ -9,7 +9,7 @@ export default defineComponent({
       type: "string",
       secret: true,
       label: "TikTok LIVE API Key",
-      description: "Your TikTok LIVE API key. Sent as the x-api-key header. Grab a free key at https://tik.tools/pricing.",
+      description: "Your TikTok LIVE API key. Sent as the x-api-key header. Get one at https://tik.tools/pricing (7-day free evaluation).",
     },
     uniqueId: {
       type: "string",

@@ -2,7 +2,7 @@
 
 An n8n community node package that wraps the TikTok LIVE API (https://api.tik.tools). It lets you check whether creators are live, pull room and profile data, read rankings and earnings, and fetch regional live and eligibility feeds directly inside an n8n workflow.
 
-Get a free API key at https://tik.tools/pricing. Some resources (creator profile, live feed, popular ranklist, eligible creators) require a paid tier. Premium data is unlocked at https://tik.tools/pricing.
+Get an API key at https://tik.tools/pricing (7-day free evaluation). Some resources (creator profile, live feed, popular ranklist, eligible creators) require a paid tier. Premium data is unlocked at https://tik.tools/pricing.
 
 ## Package structure
 
@@ -95,7 +95,7 @@ export class TikTokLiveApi implements ICredentialType {
       typeOptions: { password: true },
       default: '',
       required: true,
-      description: 'Your TikTok LIVE API key. Get a free key at https://tik.tools/pricing.',
+      description: 'Your TikTok LIVE API key. Get one at https://tik.tools/pricing (7-day free evaluation).',
     },
   ];
 
@@ -403,7 +403,7 @@ n8n loads the credential and node classes from the compiled paths declared in th
 
 ## Tier notes
 
-- Free tier: check_alive, live_status, room_info, user_earnings, rankings, gift_info, hashtag_list.
+- Sandbox (7-day free evaluation) and up: check_alive, live_status, room_info, user_earnings, rankings, gift_info, hashtag_list.
 - Pro tier: user_profile, feed. Upgrade at https://tik.tools/pricing.
 - Agency tier: ranklist/popular, eligible_creators. Upgrade at https://tik.tools/pricing.
 

@@ -3,7 +3,7 @@
     {
       "type": "promptString",
       "id": "tiktools-api-key",
-      "description": "TikTok LIVE API key (get a free key at https://tik.tools/pricing)",
+      "description": "TikTok LIVE API key (get one at https://tik.tools/pricing, 7-day free evaluation)",
       "password": true
     }
   ],
