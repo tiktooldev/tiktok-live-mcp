@@ -80,9 +80,8 @@ async function api(method, path, body) {
   }
 }
 
-// Several upstream endpoints answer with a pre-signed webcast.tiktok.com URL
-// instead of data, because the signature is bound to the caller's IP. An MCP
-// client cannot perform that second hop, so the server completes it here.
+// Some API endpoints answer with a pre-signed TikTok URL instead of data.
+// An MCP client cannot perform that second hop, so the server completes it here.
 // The API key is never attached to this request and the host is allow-listed.
 async function followSigned(sig) {
   let u;
