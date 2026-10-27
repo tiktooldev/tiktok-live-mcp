@@ -3,7 +3,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 
-const VERSION = '0.2.2';
+const VERSION = '0.2.3';
 const DEFAULT_BASE = 'https://api.tik.tools';
 const UPGRADE = 'https://tik.tools/pricing';
 const TIMEOUT_MS = 20000;
@@ -80,8 +80,9 @@ async function api(method, path, body) {
   }
 }
 
-// Some API endpoints answer with a pre-signed TikTok URL instead of data.
-// An MCP client cannot perform that second hop, so the server completes it here.
+// Several upstream endpoints answer with a pre-signed webcast.tiktok.com URL
+// instead of data, because the signature is bound to the caller's IP. An MCP
+// client cannot perform that second hop, so the server completes it here.
 // The API key is never attached to this request and the host is allow-listed.
 async function followSigned(sig) {
   let u;

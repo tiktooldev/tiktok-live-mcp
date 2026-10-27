@@ -90,56 +90,56 @@ Eleven tools. Tier requirements are stated on every tool that is gated; when you
 
 Ask your MCP client in plain language; it selects the tool and arguments. The arguments each tool receives are shown below.
 
-**`get_live_status`** - "Is zzingwoo live right now?"
+**`get_live_status`** - "Is creator_username live right now?"
 
 ```json
-{ "username": "zzingwoo" }
+{ "username": "creator_username" }
 ```
 
 ```json
-{ "username": "zzingwoo", "unique_id": "zzingwoo", "is_live": true, "room_id": "7669351857706339092", "cached": true }
+{ "username": "creator_username", "unique_id": "creator_username", "is_live": true, "room_id": "7000000000000000001", "cached": true }
 ```
 
-**`check_live`** - "Which of these creators are live: zzingwoo, tv_asahi_news?"
+**`check_live`** - "Which of these creators are live: creator_username, another_creator?"
 
 ```json
-{ "usernames": ["zzingwoo", "tv_asahi_news"] }
+{ "usernames": ["creator_username", "another_creator"] }
 ```
 
 ```json
 {
   "checked": 2,
-  "live_now": ["zzingwoo"],
+  "live_now": ["creator_username"],
   "results": [
-    { "username": "zzingwoo", "is_live": true, "room_id": "7669351857706339092", "viewers": null },
-    { "username": "tv_asahi_news", "is_live": false, "room_id": "7667403943404358407", "viewers": null }
+    { "username": "creator_username", "is_live": true, "room_id": "7000000000000000001", "viewers": null },
+    { "username": "another_creator", "is_live": false, "room_id": "7000000000000000002", "viewers": null }
   ]
 }
 ```
 
-**`get_room_info`** - "What is zzingwoo streaming and how many viewers?"
+**`get_room_info`** - "What is creator_username streaming and how many viewers?"
 
 ```json
-{ "username": "zzingwoo" }
+{ "username": "creator_username" }
 ```
 
 ```json
 {
-  "username": "zzingwoo",
+  "username": "creator_username",
   "is_live": true,
-  "room_id": "7669351857706339092",
+  "room_id": "7000000000000000001",
   "title": "Lets Go LIVE!",
   "viewers": 47,
   "started_at": "2026-08-02T08:42:28.000Z",
   "live_duration_seconds": 14041,
-  "owner": { "id_str": "7410115547105379344", "nickname": "Jungwoo", "display_id": "zzingwoo" }
+  "owner": { "id_str": "1234567890123456789", "nickname": "Creator Name", "display_id": "creator_username" }
 }
 ```
 
-**`get_creator_profile`** - "Show me the TikTok profile for zzingwoo." (Pro)
+**`get_creator_profile`** - "Show me the TikTok profile for creator_username." (Pro)
 
 ```json
-{ "username": "zzingwoo" }
+{ "username": "creator_username" }
 ```
 
 Returns nickname, bio, verification flag, avatar, follower and video counts.
@@ -159,12 +159,12 @@ Returns nickname, bio, verification flag, avatar, follower and video counts.
 }
 ```
 
-Filter and scope it: `{ "search": "rose", "limit": 3 }` returns only matching gifts. Passing `{ "username": "zzingwoo" }` scopes the catalog to that creator's live room.
+Filter and scope it: `{ "search": "rose", "limit": 3 }` returns only matching gifts. Passing `{ "username": "creator_username" }` scopes the catalog to that creator's live room.
 
-**`get_gift_gallery`** - "What gift goals has zzingwoo set for this stream?"
+**`get_gift_gallery`** - "What gift goals has creator_username set for this stream?"
 
 ```json
-{ "username": "zzingwoo" }
+{ "username": "creator_username" }
 ```
 
 Returns the wishlist with per-gift progress. If the creator is offline the tool answers with `is_live: false` and an explanatory note rather than an error.
@@ -181,7 +181,7 @@ Returns the wishlist with per-gift progress. If the creator is offline the tool 
   "returned": 3,
   "daily_feed_remaining": 91,
   "streams": [
-    { "username": "athens.metal.taxi", "nickname": "Athens Metal Taxi", "title": "DARK ART RADIO", "viewers": 1, "room_id": "7669409576596392726", "followers": 812 }
+    { "username": "third_creator", "nickname": "Third Creator", "title": "Live now", "viewers": 1, "room_id": "7000000000000000003", "followers": 812 }
   ]
 }
 ```
@@ -194,7 +194,7 @@ Returns the wishlist with per-gift progress. If the creator is offline the tool 
 
 ```json
 { "type": "daily", "region": "KR", "region_label": "South Korea", "tier": "pro", "count": 99,
-  "entries": [{ "rank": 1, "unique_id": "choi_wooon", "nickname": "woon", "score": 1667836, "is_live": false }] }
+  "entries": [{ "rank": 1, "unique_id": "top_creator", "nickname": "Top Creator", "score": 1667836, "is_live": false }] }
 ```
 
 `type` accepts `daily`, `weekly`, `league`, `gaming` and `shopping`. Requesting a board above your tier returns the requirement:

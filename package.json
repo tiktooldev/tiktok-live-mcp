@@ -1,19 +1,23 @@
 {
   "name": "tiktok-live-mcp",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "MCP server for the TikTok LIVE API - detect live creators, room and creator data, gifts, and leaderboards from any TikTok LIVE stream.",
   "type": "module",
   "bin": {
-    "tiktok-live-mcp": "src/index.js"
+    "tiktok-live-mcp": "dist/index.js"
   },
   "files": [
-    "src"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true});require('fs').cpSync('src','dist',{recursive:true})\" && node strip-comments.mjs dist",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "mcp",
@@ -36,5 +40,8 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
     "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
   }
 }
