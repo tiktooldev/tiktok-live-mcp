@@ -1,8 +1,8 @@
 # TikTok LIVE MCP
 
-An MCP (Model Context Protocol) server that gives Claude, Cursor, VSCode and any MCP client live access to TikTok LIVE data: detect who is live, pull room and creator data, gift catalogs and regional leaderboards, straight from a chat prompt.
+An MCP (Model Context Protocol) server that gives Claude, Cursor, VSCode and any MCP client live access to TikTok LIVE data: detect who is live, pull room and creator data, gift catalogs and regional leaderboards across 44 regions, straight from a chat prompt.
 
-Powered by the [tik.tools](https://tik.tools) platform. 7-day free evaluation included (Sandbox). Full unmasked leaderboards, league and gaming boards, the eligible-creator recruiting feed, and the real-time event WebSocket are available at [tik.tools/pricing](https://tik.tools/pricing).
+Powered by the [tik.tools](https://tik.tools) platform. Sandbox is a 7-day evaluation, no credit card; after 7 days requests return "Evaluation period ended" until you pick a plan. Full unmasked leaderboards, league and gaming boards, the eligible-creator recruiting feed, and the real-time event WebSocket are available at [tik.tools/pricing](https://tik.tools/pricing).
 
 ## Quick install
 
@@ -224,18 +224,39 @@ Returns the ranked board. Below Global Agency the creator identifiers come back 
 ```
 
 ```json
-{ "status_code": 0, "data": { "tier": "pro", "api": { "limit": 300, "remaining": 287 }, "websocket": { "limit": 50, "current": 0 }, "bulk_check_limit": 50 } }
+{ "status_code": 0, "data": { "tier": "pro", "api": { "limit": 120, "remaining": 112 }, "websocket": { "limit": 50, "current": 0 },
+  "daily": { "limit": 75000, "used": 8, "remaining": 74992 }, "bulk_check_limit": 50 } }
 ```
+
+`api.limit` is requests per minute, `daily.limit` requests per day, `websocket.limit` concurrent streams.
+
+## Plan limits
+
+| Plan | Requests/day | Requests/min | Concurrent streams | WebSocket sessions/day | Max session length |
+|---|---|---|---|---|---|
+| Sandbox (7-day evaluation) | 5,000 | 20 | 3 | 50 | 2 h |
+| Basic | 10,000 | 30 | 20 | 300 | 8 h |
+| Pro | 75,000 | 120 | 50 | 3,000 | 12 h |
+| Agency Starter | 75,000 | 120 | 100 | 3,000 | 12 h |
+| Ultra | 300,000 | 300 | 250 | Unlimited | 24 h |
+| Agency Global | 1,000,000 | 1,000 | 500 | Unlimited | 24 h |
+
+Current prices: [tik.tools/pricing](https://tik.tools/pricing). Live service status: [tik.tools/status](https://tik.tools/status).
 
 ## Real-time events
 
-The REST tools above answer point-in-time questions. For live chat, gift and battle streams, connect a WebSocket:
+The REST tools above answer point-in-time questions. For live chat, gift, like and battle streams (90+ event types), connect a WebSocket:
 
 ```
 wss://api.tik.tools/?uniqueId=<username>&apiKey=YOUR_KEY
 ```
 
 Full docs: [tik.tools/docs](https://tik.tools/docs)
+
+## Changes in 0.2.4
+
+- Registry metadata: `mcpName` for the official MCP Registry, `glama.json`, a `Dockerfile` for container hosts, and an MCPB `manifest.json` for one-click local installs.
+- Sandbox wording: a 7-day evaluation, no credit card.
 
 ## Changes in 0.2.0
 

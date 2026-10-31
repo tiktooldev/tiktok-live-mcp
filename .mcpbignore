@@ -1,0 +1,11 @@
+dist-integrations/
+test-client.mjs
+strip-comments.mjs
+DISTRIBUTION.md
+Dockerfile
+.dockerignore
+glama.json
+server.json
+smithery.yaml
+*.mcpb
+*.tgz

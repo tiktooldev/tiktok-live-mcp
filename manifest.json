@@ -1,0 +1,59 @@
+{
+  "manifest_version": "0.3",
+  "name": "tiktok-live-mcp",
+  "display_name": "TikTok LIVE",
+  "version": "0.2.4",
+  "description": "TikTok LIVE data for AI clients: live status, room and creator data, gifts, regional leaderboards.",
+  "long_description": "Live status checks, room and creator data, gift catalogs and gift goals, live stream discovery and regional creator leaderboards across 44 regions, served by the tik.tools TikTok LIVE API. Sandbox is a 7-day evaluation, no credit card. Gated tools state their minimum plan and return an upgrade message instead of failing.",
+  "author": {
+    "name": "TikTool",
+    "url": "https://tik.tools"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiktooldev/tiktok-live-mcp"
+  },
+  "homepage": "https://tik.tools/mcp",
+  "documentation": "https://tik.tools/docs",
+  "support": "https://github.com/tiktooldev/tiktok-live-mcp/issues",
+  "license": "MIT",
+  "keywords": ["tiktok", "tiktok-live", "livestream", "gifts", "leaderboard", "creators"],
+  "privacy_policies": ["https://tik.tools/privacy"],
+  "server": {
+    "type": "node",
+    "entry_point": "src/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/src/index.js"],
+      "env": {
+        "TIKTOOLS_API_KEY": "${user_config.tiktools_api_key}"
+      }
+    }
+  },
+  "user_config": {
+    "tiktools_api_key": {
+      "type": "string",
+      "title": "tik.tools API key",
+      "description": "Get a key at https://tik.tools/pricing (Sandbox: 7-day evaluation, no credit card)",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "tools": [
+    { "name": "get_live_status", "description": "Whether one creator is live now, plus room id" },
+    { "name": "check_live", "description": "Live check for a batch of creators (Basic and above)" },
+    { "name": "get_room_info", "description": "Title, viewers, duration and host for a live room (Basic and above)" },
+    { "name": "get_creator_profile", "description": "Creator profile by username (Pro and above)" },
+    { "name": "get_gift_catalog", "description": "Gift id, name, diamond cost and icon" },
+    { "name": "get_gift_gallery", "description": "A creator's live gift goals and progress" },
+    { "name": "get_live_feed", "description": "Streams live right now in a region (Pro and above)" },
+    { "name": "get_leaderboard", "description": "Regional creator leaderboard by diamonds" },
+    { "name": "get_popular_live", "description": "TikTok Popular LIVE board per region" },
+    { "name": "find_eligible_creators", "description": "Score-ranked creators to recruit in a region (Agency Global)" },
+    { "name": "get_rate_limits", "description": "Your key's plan, quota and WebSocket allowance" }
+  ],
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": { "node": ">=18.0.0" }
+  }
+}

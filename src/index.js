@@ -3,7 +3,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 
-const VERSION = '0.2.3';
+const VERSION = '0.2.4';
 const DEFAULT_BASE = 'https://api.tik.tools';
 const UPGRADE = 'https://tik.tools/pricing';
 const TIMEOUT_MS = 20000;
@@ -37,7 +37,7 @@ const server = new McpServer({ name: 'tiktok-live-mcp', version: VERSION });
 const NO_KEY = {
   error: 'No API key configured.',
   how_to_fix:
-    'Get an API key at https://tik.tools/pricing (7-day free evaluation) and set TIKTOOLS_API_KEY (or TIKTOOL_API_KEY) in your MCP client config.',
+    'Get an API key at https://tik.tools/pricing (7-day evaluation, no credit card) and set TIKTOOLS_API_KEY (or TIKTOOL_API_KEY) in your MCP client config.',
 };
 
 // Single transport to the TikTok LIVE API. The key, timeout, size cap, upgrade

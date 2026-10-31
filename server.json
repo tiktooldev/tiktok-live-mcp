@@ -1,25 +1,30 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.tiktooldev/tiktok-live-mcp",
-  "description": "Live TikTok LIVE data for LLMs: detect live creators, room and creator data, gifts, and regional leaderboards. 7-day free evaluation; full data at tik.tools.",
+  "title": "TikTok LIVE",
+  "description": "TikTok LIVE data for AI clients: live status, room and creator data, gifts, regional leaderboards.",
+  "websiteUrl": "https://tik.tools/mcp",
   "repository": {
     "url": "https://github.com/tiktooldev/tiktok-live-mcp",
     "source": "github"
   },
-  "version": "0.2.3",
+  "version": "0.2.4",
   "packages": [
     {
-      "registry_type": "npm",
-      "registry_base_url": "https://registry.npmjs.org",
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "tiktok-live-mcp",
-      "version": "0.2.3",
-      "transport": { "type": "stdio" },
-      "environment_variables": [
+      "version": "0.2.4",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
         {
           "name": "TIKTOOLS_API_KEY",
-          "description": "TikTools API key. Get one at https://tik.tools/pricing (7-day free evaluation)",
-          "is_required": true,
-          "is_secret": true
+          "description": "tik.tools API key from https://tik.tools/pricing (Sandbox: 7-day evaluation, no credit card)",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
         }
       ]
     }
